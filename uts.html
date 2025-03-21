@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran UTS</title>
+    <link rel="stylesheet" href="uts.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulir Pendaftaran</h2>
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Nama Lengkap" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Nomor Telepon" required>
+            <input type="text" id="address" placeholder="Alamat" required>
+            <button type="submit">Daftar</button>
+        </form>
+
+        <h2>Daftar Anggota</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Nomor Telepon</th>
+                    <th>Alamat</th>
+                </tr>
+            </thead>
+            <tbody id="memberList">
+                <!-- Data akan ditambahkan di sini -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let count = 1;
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const address = document.getElementById("address").value;
+
+            const table = document.getElementById("memberList");
+            const row = table.insertRow();
+            row.innerHTML = `<td>${count++}</td><td>${name}</td><td>${email}</td><td>${phone}</td><td>${address}</td>`;
+
+            document.getElementById("registrationForm").reset();
+        });
+    </script>
+</body>
+</html>
